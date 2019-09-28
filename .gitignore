@@ -3,3 +3,7 @@ node_modules
 npm-debug.log
 .env
 ./config
+<<<<<<< HEAD
+=======
+package-lock.json
+>>>>>>> fba23e75d60227dbcdca5ecb00e7ef9a18fab145
