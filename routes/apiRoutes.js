@@ -83,7 +83,7 @@ module.exports = function(app) {
 	// }
 
 	app.post("/api/utils/", (req, res) => {
-		db.Utils.create({
+		db.Util.create({
 			type: req.body.type,
 			name: req.body.name,
 			url: req.body.url,
@@ -119,4 +119,24 @@ module.exports = function(app) {
 			res.json(data);
 		});
 	});
+
+	app.post("/api/load/users", (req, res) => {
+		db.User.bulkCreate([{email: "test1", password: "test1"},{email: "test2", password: "test2"}, {email: "test3", password:"test3"}])
+	})
+	
+	app.post("/api/load/utils", (req, res) => {
+		db.Util.bulkCreate([{
+			"type": "Electric",
+			"name": "Xcel Energy",
+			"url": "https://www.xcelenergy.com/billing_and_payment",
+			"logo": "https://www.xcelenergy.com/staticfiles/xe-responsive/assets/images/logo.png"
+		},{
+			"type": "Water",
+			"name": "Den Water",
+			"url": "https://www.denverwater.org/pay-my-bill",
+			"logo": "https://www.denverwater.org/sites/default/files/DW-Horizontal.png"
+		}])
+
+
+	})
 };
