@@ -131,6 +131,27 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/load/bills", (req,res)=>{
+	  db.Bill.destroy({
+		  where: {}
+	  }).then(()=>{
+
+	  
+	  db.Bill.bulkCreate([
+		  {
+			  UserId: 1,
+			  UtilId: 1,
+			  amount: 100,
+			  dueDate: "2019-12-31"
+		  }
+	  ]).then(success =>{
+		  if(success){
+			  res.sendStatus(200);
+		  }
+	  })
+	})
+  })
+
   app.post("/api/load/users", (req, res) => {
     db.User.destroy({
       where: {}
@@ -175,7 +196,7 @@ module.exports = function(app) {
           logo:
             "https://www.denverwater.org/sites/default/files/DW-Horizontal.png"
         }
-      ]).then(res => {
+      ]).then(success=> {
         res.sendStatus(200);
       });
     });
