@@ -131,6 +131,27 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/load/bills", (res,res)=>{
+	  db.Bill.destroy({
+		  where: {}
+	  }).then(()=>{
+
+	  
+	  db.Bill.bulkCreate([
+		  {
+			  user_id: 1,
+			  utils_id: 1,
+			  amount: 100,
+			  date: "2019-12-31"
+		  }
+	  ]).then(success =>{
+		  if(success){
+			  res.sendStatus(200);
+		  }
+	  })
+	})
+  })
+
   app.post("/api/load/users", (req, res) => {
     db.User.destroy({
       where: {}
