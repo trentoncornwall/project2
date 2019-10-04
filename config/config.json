@@ -1,7 +1,7 @@
 {
 	"development": {
 		"username": "root",
-		"password": "mysql420",
+		"password": "",
 		"database": "youtils_db",
 		"host": "localhost",
 		"dialect": "mysql"
