@@ -50,7 +50,7 @@ module.exports = function(app) {
 
 	// retrieving all Utilites
 	app.get("/api/utils/all", (req, res) => {
-		db.Utils.findAll({}).then(data => {
+		db.Util.findAll({}).then(data => {
 			if (data) {
 				console.log(data);
 				res.json(data);
@@ -63,7 +63,7 @@ module.exports = function(app) {
 	// retreiving one utility
 	app.get("/api/utils/:utility", (req, res) => {
 		let utility = req.params.utility;
-		db.Utils.findOne({ where: { name: utility } }).then(data => {
+		db.Util.findOne({ where: { name: utility } }).then(data => {
 			if (data) {
 				console.log(`get request for ${utility}: ${data}`);
 				res.json(data);
