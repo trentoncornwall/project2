@@ -28,7 +28,9 @@ module.exports = function (app) {
     }).then(data => {
       // if found user
       if (data) {
-        res.sendStatus(200);
+        res.render('home', {
+          email: req.params.email
+        });
       }
       // if no user
       else {
@@ -37,7 +39,7 @@ module.exports = function (app) {
           password: req.body.password
         }).then(data => {
           if (data) {
-            res.sendStatus(200);
+            res.redirect(200);
           }
         });
       }
