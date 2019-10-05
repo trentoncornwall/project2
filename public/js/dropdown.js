@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     $('.dropdown-trigger').dropdown();
     $('.datepicker').datepicker();
-
+    $('.collapsible').collapsible();
 
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
