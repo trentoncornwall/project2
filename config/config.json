@@ -16,6 +16,9 @@
 	},
 	"production": {
 		"use_env_variable": "JAWSDB_URL",
-		"dialect": "mysql"
+		"dialect": "mysql",
+		"googleClientId": "porcess.env.GOOGLE_CLIENT_ID",
+		"googleClientSecret": "process.env.Google_CLIENT_SECRET",
+		"cookieKey": "process.env.COOKIE_KEY"
 	}
 }
