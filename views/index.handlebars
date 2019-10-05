@@ -30,13 +30,7 @@
                                 console.log('Image URL: ' + profile.getImageUrl());
                                 console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not
                                 const email = profile.getEmail();
-                                $.get(`/api/user/${email}`, getresponse => {
-                                    if (getresponse === "OK") {
-                                        console.log(`response from get: ${getresponse}`)
-                                    } else {
-                                        //  console.log(`response = ${response}`)
-                                    }
-                                })
+                                $.get(`/api/user/${email}`)
                             }
                             function signOut() {
                                 const auth2 = gapi.auth2.getAuthInstance();

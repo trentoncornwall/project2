@@ -20,31 +20,31 @@ module.exports = function (app) {
   });
 
   // locating SINGLE user
-  app.get("/api/user/:email", (req, res) => {
-    db.User.findOne({
-      where: {
-        email: req.params.email
-      }
-    }).then(data => {
-      // if found user
-      if (data) {
-        res.render('home', {
-          email: req.params.email
-        });
-      }
-      // if no user
-      else {
-        db.User.create({
-          email: req.body.email,
-          password: req.body.password
-        }).then(data => {
-          if (data) {
-            res.redirect(200);
-          }
-        });
-      }
-    });
-  });
+  // app.get("/api/user/:email", (req, res) => {
+  //   db.User.findOne({
+  //     where: {
+  //       email: req.params.email
+  //     }
+  //   }).then(data => {
+  //     // if found user
+  //     if (data) {
+  //       res.render('home', {
+  //         email: req.params.email
+  //       });
+  //     }
+  //     // if no user
+  //     else {
+  //       db.User.create({
+  //         email: req.body.email,
+  //         password: req.body.password
+  //       }).then(data => {
+  //         if (data) {
+  //           res.redirect(200);
+  //         }
+  //       });
+  //     }
+  //   });
+  // });
 
   // get ALL users for troubleshooting RETURNS AN ARRAY with objects inside
   app.get("/api/user/all", (req, res) => {

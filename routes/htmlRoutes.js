@@ -17,11 +17,33 @@ module.exports = function (app) {
 
   });
 
-  app.post("/home", (req, res) => {
-    const email = res.body.email;
-    res.redirect("/");
-  })
-
+  app.get("/api/user/:email", (req, res) => {
+    db.User.findOne({
+      where: {
+        email: req.params.email
+      }
+    }).then(data => {
+      // if found user
+      if (data) {
+        res.render('home', {
+          email: req.params.email
+        });
+      }
+      // if no user
+      else {
+        db.User.create({
+          email: req.body.email,
+          password: req.body.password
+        }).then(data => {
+          if (data) {
+            res.render('home', {
+              email: req.params.email
+            });
+          }
+        });
+      }
+    });
+  });
 
 
 
