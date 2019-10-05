@@ -6,7 +6,7 @@
                     <span class="card-title">Log In</span>
                 </div>
                 <div class="card-action">
-                    <div class="row">
+                    {{!-- <div class="row">
                         <div class="input-field col s12">
                             <input id="email" type="text" class="validate">
                             <label for="email">EMAIL:</label>
@@ -17,6 +17,31 @@
                             <input id="password" type="password" class="validate">
                             <label for="password">PASSWORD:</label>
                         </div>
+                    </div> --}}
+                    <div class="row">
+                        <a class="waves-effect waves-light btn-large">Button</a>
+                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                        <a href="#" onclick="signOut();">Sign out</a>
+                        <script>
+                            function onSignIn(googleUser) {
+                                var profile = googleUser.getBasicProfile();
+                                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                                console.log('Name: ' + profile.getName());
+                                console.log('Image URL: ' + profile.getImageUrl());
+                                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not
+                                const email = profile.getEmail();
+                                //    $.get(`/api/user/${email}`, getresponse => {
+                                //         console.log(getresponse)
+                                //     })
+                                window.location.replace(`https://itility.herokuapp.com/api/user/:${email}`)
+                            }
+                            function signOut() {
+                                const auth2 = gapi.auth2.getAuthInstance();
+                                auth2.signOut().then(function () {
+                                    console.log('User signed out.');
+                                });
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
