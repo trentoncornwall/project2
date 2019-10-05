@@ -8,7 +8,7 @@
 	},
 	"test": {
 		"username": "root",
-		"password":"mysql420",
+		"password": "mysql420",
 		"database": "youtils_db",
 		"host": "localhost",
 		"dialect": "mysql",
