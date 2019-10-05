@@ -31,11 +31,11 @@
                                 console.log('Image URL: ' + profile.getImageUrl());
                                 console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not
                                 const email = profile.getEmail();
-                                $.get(`/api/user/${email}`, response => {
+                                $.get(`/api/user/${email}`, getresponse => {
                                     if (response === "OK") {
-                                        console.log(response)
+                                        console.log(`response from get: ${getresponse}`)
                                     } else {
-                                        console.log(`response = ${response}`)
+                                        //  console.log(`response = ${response}`)
                                     }
                                 })
                             }
