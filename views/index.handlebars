@@ -32,8 +32,8 @@
                                 console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not
                                 const email = profile.getEmail();
                                 $.get(`/api/user/${email}`, response => {
-                                    if (response === "200") {
-                                        window.location.replace("http://stackoverflow.com");
+                                    if (response === "OK") {
+                                        window.location.replace("/home");
                                     } else {
                                         console.log(`response = ${response}`)
                                     }
