@@ -19,7 +19,7 @@ module.exports = function (app) {
 
   app.post("/home", (req, res) => {
     const email = res.body.email;
-    res.send(email);
+    res.redirect("/");
   })
 
 

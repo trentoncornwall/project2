@@ -83,7 +83,15 @@
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not
             const email = profile.getEmail();
 
-            profile ? console.log("pass") : console.log("fail");
+            if (profile) { //if user is signed in
+                $.post("/home", { email: email }, res => {
+                    console.log(res)
+                })
+            }
+
+
+
+            // THIS WORKS profile ? console.log("pass") : console.log("fail");
 
             $.get(`/api/user/${email}`, response => {
                 if (response === "OK") {
