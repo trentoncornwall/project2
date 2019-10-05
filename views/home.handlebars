@@ -1,3 +1,6 @@
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<a href="#" onclick="signOut();">Sign out</a>
+
 <div class="container">
     <div class="row">
         <div class="card blue-grey darken-1" id="create_bill">
@@ -69,21 +72,28 @@
             </div>
         </div>
     </div>
+
     <script>
-        function onLoad() {
-            gapi.load('auth2', function () {
-                gapi.auth2.init();
-                if (auth2.isSignedIn.get()) {
-                    var profile = auth2.currentUser.get().getBasicProfile();
-                    console.log('ID: ' + profile.getId());
-                    console.log('Full Name: ' + profile.getName());
-                    console.log('Given Name: ' + profile.getGivenName());
-                    console.log('Family Name: ' + profile.getFamilyName());
-                    console.log('Image URL: ' + profile.getImageUrl());
-                    console.log('Email: ' + profile.getEmail());
+        function onSignIn(googleUser) {
+            console.log("CALLED ONSIGNIN")
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not
+            const email = profile.getEmail();
+            $.get(`/api/user/${email}`, response => {
+                if (response === "OK") {
+                    window.location.replace("/home");
                 } else {
-                    console.log('auth didnt work')
+                    console.log(`response = ${response}`)
                 }
+            })
+        }
+        function signOut() {
+            const auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
             });
         }
     </script>
