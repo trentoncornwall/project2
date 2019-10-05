@@ -33,7 +33,7 @@
                                 //    $.get(`/api/user/${email}`, getresponse => {
                                 //         console.log(getresponse)
                                 //     })
-                                window.location.replace(`https://itility.herokuapp.com/api/user/:${email}`)
+                                window.location.replace(`https://itility.herokuapp.com/api/user/${email}`)
                             }
                             function signOut() {
                                 const auth2 = gapi.auth2.getAuthInstance();
