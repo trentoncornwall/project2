@@ -19,11 +19,7 @@ module.exports = function (app) {
 
   app.post("/home", (req, res) => {
     const email = res.body.email;
-    console.log(
-      "email soon"
-    )
-    console.log(email)
-    res.sendStatus(200);
+    res.send(email);
   })
 
 
