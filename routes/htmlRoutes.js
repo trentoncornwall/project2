@@ -25,7 +25,7 @@ module.exports = function (app) {
     }).then(data => {
       // if found user
       if (data) {
-        res.render('home', {
+        res.render("home", {
           email: req.params.email
         });
       }
@@ -36,7 +36,7 @@ module.exports = function (app) {
           password: req.body.password
         }).then(data => {
           if (data) {
-            res.render('home', {
+            res.render("home", {
               email: req.params.email
             });
           }
