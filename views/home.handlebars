@@ -6,15 +6,15 @@
             <li><a href="/home">home</a></li>
             <i class="material-icons">account_circle</i>
             <li><a href="/" onclick="signOut();">Sign out</a></li>
-            <script>
-                function signOut() {
-                    const auth2 = gapi.auth2.getAuthInstance();
-                    auth2.signOut().then(function () {
-                        console.log('User signed out.');
-                    });
-                }
-            </script>
         </ul>
+        <script>
+            function signOut() {
+                const auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                });
+            }
+        </script>
     </div>
 </nav>
 <div class="container">
