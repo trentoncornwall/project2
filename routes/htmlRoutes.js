@@ -8,7 +8,7 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/home", function (req, res) {
+  app.get("/home/", function (req, res) {
     const allUtils = db.Util.findAll({});
     Promise.all([allUtils]).then(responses => {
       res.render("home");
@@ -16,6 +16,15 @@ module.exports = function (app) {
     });
 
   });
+
+  app.post("/home", (req, res) => {
+    const email = res.body.email;
+    console.log(
+      "email soon"
+    )
+    console.log(email)
+    res.sendStatus(200);
+  })
 
 
 

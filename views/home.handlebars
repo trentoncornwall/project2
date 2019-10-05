@@ -84,7 +84,7 @@
             const email = profile.getEmail();
             $.get(`/api/user/${email}`, response => {
                 if (response === "OK") {
-                    window.location.replace("/home");
+                    $.post("/home", { email: email })
                 } else {
                     console.log(`response = ${response}`)
                 }
