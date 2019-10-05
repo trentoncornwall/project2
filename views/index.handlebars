@@ -32,7 +32,7 @@
                                 console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not
                                 const email = profile.getEmail();
                                 $.get(`/api/user/${email}`, getresponse => {
-                                    if (response === "OK") {
+                                    if (getresponse === "OK") {
                                         console.log(`response from get: ${getresponse}`)
                                     } else {
                                         //  console.log(`response = ${response}`)
