@@ -73,43 +73,6 @@
         </div>
     </div>
 
-    <script>
-        function onSignIn(googleUser) {
-            console.log("CALLED ONSIGNIN")
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not
-            const email = profile.getEmail();
-
-            if (profile) { //if user is signed in
-                $.post("/home", { email: email }, res => {
-                    console.log(res)
-                })
-            }
-
-
-
-            // THIS WORKS profile ? console.log("pass") : console.log("fail");
-
-            // $.get(`/api/user/${email}`, response => {
-            //   if (response === "OK") {
-            //     $.post("/home", { email: email }, emailresponse => {
-            //       console.log(emailresponse)
-            // })
-            //} else {
-            //  console.log(`response = ${response}`)
-            //}
-        })
-        }
-        function signOut() {
-            const auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-        }
-    </script>
 </div>
 
 <script src="/js/dropdown.js"></script>

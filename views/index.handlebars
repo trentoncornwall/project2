@@ -33,6 +33,7 @@
                                 const email = profile.getEmail();
                                 $.get(`/api/user/${email}`, response => {
                                     if (response === "OK") {
+                                        console.log(response)
                                     } else {
                                         console.log(`response = ${response}`)
                                     }
@@ -51,4 +52,3 @@
         </div>
     </div>
 </div>
-{{!-- <script src="/js/dropdown.js"></script> --}}
