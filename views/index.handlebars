@@ -31,13 +31,13 @@
                                 console.log('Image URL: ' + profile.getImageUrl());
                                 console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not
                                 const email = profile.getEmail();
-                                // $.get(`/api/user/${email}`, response => {
-                                //   if (response === "OK") {
-                                //       window.location.replace("/home");
-                                //  } else {
-                                //     console.log(`response = ${response}`)
-                                // }
-                                //})
+                                $.get(`/api/user/${email}`, response => {
+                                    if (response === "OK") {
+                                        window.location.replace("/home");
+                                    } else {
+                                        console.log(`response = ${response}`)
+                                    }
+                                })
                             }
                             function signOut() {
                                 const auth2 = gapi.auth2.getAuthInstance();
