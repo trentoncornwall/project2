@@ -3,9 +3,7 @@ var db = require("../models");
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    db.Example.findAll({}).then(function (youtils_db) {
-      res.render("index");
-    });
+    res.render("index");
   });
 
   app.get("/home/", function (req, res) {
@@ -18,6 +16,7 @@ module.exports = function (app) {
   });
 
   app.get("/user/:email", (req, res) => {
+    console.log('reeqasldkfjasldkjf ')
     db.User.findOne({
       where: {
         email: req.params.email
