@@ -5,54 +5,92 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">note_add</i>Add Bill</div>
 
-            <div class="collapsible-body">
-                
-                <div class="row">
-                    <div class="input-field col s3">
-                        <i class="material-icons prefix">attach_money</i>
-                        <input id="icon_prefix" type="text" class="validate">
-                        <label for="icon_prefix">Amount</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s3">
-                        <i class="material-icons prefix">date_range</i>
-                        <input type="text" id= "calendar" class="datepicker">
-                        <label for="calendar">Date:</label>
-                    </div>
-                </div>
-
-                <div class="row">
+                <div class="collapsible-body">
                     
-
-                    <div class="input-field col s12">
-                        
-                        <i class="material-icons prefix">lightbulb_outline</i>
-                        <select>
-                            <option value="" disabled selected></option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-
-                        <label>Utility Type:</label>
-
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <i class="material-icons prefix">attach_money</i>
+                            <input id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">Amount</label>
+                        </div>
                     </div>
 
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <i class="material-icons prefix">date_range</i>
+                            <input type="text" id= "calendar" class="datepicker">
+                            <label for="calendar">Date:</label>
+                        </div>
+                    </div>
 
-                </div>
+                    <div class="row">
+                        
 
-                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Add Bill</a>
+                        <div class="input-field col s12">
+                            
+                            <i class="material-icons prefix">lightbulb_outline</i>
+                            <select>
+                                <option value="" disabled selected></option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+
+                            <label>Utility Type:</label>
+
+                        </div>
 
 
-    
+                    </div>
+                
+
+                    <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Add Bill</a>
+
+
+                </div>  
+            </div>
         </li>
 
     </ul>
 
 
+    <div class="row">
+        {{!-- <div class="card blue-grey darken-1" id="create_bill">
+            <div class="card-content white-text">
+                <span class="card-title">New Bill</span>
+
+        </div> --}}
+
+        {{!-- <div class="card-action"> --}}
+        <div>
+            {{!-- <div class="input-field col s6">
+                <i class="material-icons prefix">attach_money</i>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">Amount</label>
+            </div> --}}
+            {{!-- <div class="input-field col s6">
+                <input type="text" class="datepicker">
+            </div> --}}
+
+            <div class="input-field col s6">
+                <!-- Dropdown Trigger -->
+                {{!-- <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Utility</a> --}}
+
+                <!-- Dropdown Structure -->
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a href="#!">Water</a></li>
+                    <li><a href="#!">Example..</a></li>
+
+                </ul>
+            </div>
+
+                {{!-- <div class="input-field col s3">
+                    <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                </div> --}}
     
+        </div>
+
+
 
     <div class="row">
         <div class="card">
@@ -92,6 +130,12 @@
     </div>
 
 
+
 </div>
+
+
+
+
+
 
 <script src="/js/dropdown.js"></script>
