@@ -17,7 +17,7 @@ module.exports = function (app) {
 
   });
 
-  app.get("/api/user/:email", (req, res) => {
+  app.get("/user/:email", (req, res) => {
     db.User.findOne({
       where: {
         email: req.params.email
