@@ -23,9 +23,20 @@
       <li><a href="/">Login</a></li>
       <li><a href="/home">home</a></li>
       <i class="material-icons">account_circle</i>
+      <a href="#" onclick="signOut();">Sign out</a>
     </ul>
   </div>
 </nav>
+<script>
+
+  function signOut() {
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      window.location.replace(`https://itility.herokuapp.com/`)
+    });
+  }
+</script>
 
 <body>
   {{{body}}}
