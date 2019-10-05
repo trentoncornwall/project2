@@ -37,7 +37,7 @@ module.exports = function (app) {
           password: req.body.password
         }).then(data => {
           if (data) {
-            res.sendStatus("200");
+            res.sendStatus(200);
           }
         });
       }
