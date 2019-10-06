@@ -10,7 +10,9 @@ $(document).ready(function () {
 
     $('.dropdown-trigger').dropdown();
     $('.datepicker').datepicker();
+    $('.collapsible').collapsible();
 
+<<<<<<< HEAD
 
     function onLoad() {
         gapi.load('auth2', function () {
@@ -32,4 +34,13 @@ $(document).ready(function () {
 
 
 
+=======
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+>>>>>>> faf4a34a75b418278793d68c426966524ada10d1
 });
