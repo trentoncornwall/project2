@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="./styles/style.css" media="screen" title="no title" charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <link rel="stylesheet" href="../public/styles/betaviews.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
   <meta name="google-signin-client_id"
     content="184099445405-01k6fr1nvgbd7kpduj8tcrq8548fjcui.apps.googleusercontent.com">
   <title>Itils</title>
@@ -24,9 +24,25 @@
       <li><a href="/">Login</a></li>
       <li><a href="/home">home</a></li>
       <i class="material-icons">account_circle</i>
+      <a href="#" onclick="signOut();" color="black">Sign out</a>
     </ul>
   </div>
 </nav>
+<script>
+  function init() {
+    gapi.load('auth2', function () {
+      /* Ready. Make a call to gapi.auth2.init or some other API */
+      gapi.auth2.init().then(console.log(`Initialize Auth 2`))
+    });
+  }
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      window.location.replace(`/`)
+    });
+  }
+</script>
 
 <body>
   {{{body}}}

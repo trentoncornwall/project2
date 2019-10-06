@@ -6,29 +6,19 @@
                     <span class="card-title">Log In</span>
                 </div>
                 <div class="card-action">
+
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="text" class="validate">
-                            <label for="email">EMAIL:</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="password" class="validate">
-                            <label for="password">PASSWORD:</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <a class="waves-effect waves-light btn-large">Button</a>
                         <div class="g-signin2" data-onsuccess="onSignIn"></div>
                         <script>
                             function onSignIn(googleUser) {
-                                console.log("CALLED ONSIGNIN")
+                                console.log('ehre')
                                 var profile = googleUser.getBasicProfile();
                                 console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
                                 console.log('Name: ' + profile.getName());
                                 console.log('Image URL: ' + profile.getImageUrl());
                                 console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not
+                                const email = profile.getEmail();
+                                window.location.replace(`/user/${email}`)
                             }
                         </script>
                     </div>
@@ -37,4 +27,3 @@
         </div>
     </div>
 </div>
-<script src="/js/dropdown.js"></script>

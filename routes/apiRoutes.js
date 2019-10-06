@@ -1,6 +1,6 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   //* USER SERVICES *//
   //*****************/
 
@@ -12,30 +12,39 @@ module.exports = function(app) {
       password: req.body.password
     }).then(data => {
       if (data) {
-        res.send("200");
+        res.sendStatus("200");
       }
     });
+
+
   });
 
   // locating SINGLE user
-  app.get("/api/user", (req, res) => {
-    db.User.findOne({
-      where: {
-        email: req.body.email,
-        password: req.body.password
-      }
-    }).then(data => {
-      // if found user
-      if (data) {
-        res.sendStatus(200);
-      }
-
-      // if no user
-      else {
-        res.sendStatus(404);
-      }
-    });
-  });
+  // app.get("/api/user/:email", (req, res) => {
+  //   db.User.findOne({
+  //     where: {
+  //       email: req.params.email
+  //     }
+  //   }).then(data => {
+  //     // if found user
+  //     if (data) {
+  //       res.render('home', {
+  //         email: req.params.email
+  //       });
+  //     }
+  //     // if no user
+  //     else {
+  //       db.User.create({
+  //         email: req.body.email,
+  //         password: req.body.password
+  //       }).then(data => {
+  //         if (data) {
+  //           res.redirect(200);
+  //         }
+  //       });
+  //     }
+  //   });
+  // });
 
   // get ALL users for troubleshooting RETURNS AN ARRAY with objects inside
   app.get("/api/user/all", (req, res) => {
@@ -131,33 +140,30 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/load/bills", (req,res)=>{
-	  db.Bill.destroy({
-		  where: {}
-	  }).then(()=>{
+  app.post("/api/load/bills", (req, res) => {
+    db.Bill.destroy({
+      where: {}
+    }).then(() => {
 
-	  
-	  db.Bill.bulkCreate([
-		  {
-			  UserId: 1,
-			  UtilId: 1,
-			  amount: 100,
-			  dueDate: "2019-12-31"
-		  }
-	  ]).then(success =>{
-		  if(success){
-			  res.sendStatus(200);
-		  }
-	  })
-	})
+
+      db.Bill.bulkCreate([{
+        UserId: 1,
+        UtilId: 1,
+        amount: 100,
+        dueDate: "2019-12-31"
+      }]).then(success => {
+        if (success) {
+          res.sendStatus(200);
+        }
+      })
+    })
   })
 
   app.post("/api/load/users", (req, res) => {
     db.User.destroy({
       where: {}
     }).then(() => {
-      db.User.bulkCreate([
-        {
+      db.User.bulkCreate([{
           email: "test1",
           password: "test1"
         },
@@ -181,22 +187,19 @@ module.exports = function(app) {
     db.Util.destroy({
       where: {}
     }).then(() => {
-      db.Util.bulkCreate([
-        {
+      db.Util.bulkCreate([{
           type: "Electric",
           name: "Xcel Energy",
           url: "https://www.xcelenergy.com/billing_and_payment",
-          logo:
-            "https://www.xcelenergy.com/staticfiles/xe-responsive/assets/images/logo.png"
+          logo: "https://www.xcelenergy.com/staticfiles/xe-responsive/assets/images/logo.png"
         },
         {
           type: "Water",
           name: "Den Water",
           url: "https://www.denverwater.org/pay-my-bill",
-          logo:
-            "https://www.denverwater.org/sites/default/files/DW-Horizontal.png"
+          logo: "https://www.denverwater.org/sites/default/files/DW-Horizontal.png"
         }
-      ]).then(success=> {
+      ]).then(success => {
         res.sendStatus(200);
       });
     });
