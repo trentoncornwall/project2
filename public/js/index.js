@@ -1,99 +1,111 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
 
-// The API object contains methods for each kind of request we'll make
+let $userID = $("#user").data("id");
+let $amountInput = $("#amount");
+let $dateInput = $("#date");
+let $utilityInput = $("#utility");
+
+const $createBillButton = $("#createBillButton");
+
+//! API METHODS
 var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
+	getBills: function() {
+		return $.ajax({
+			url: `/api/bill/${$userID.toString(10)}`,
+			type: "GET"
+		});
+	},
+
+	createBill: function(data) {
+		return $.ajax({
+			headers: {
+				"Content-Type": "application/json"
+			},
+			url: "/api/bill/",
+			type: "POST",
+			data: JSON.stringify(data)
+		});
+	}
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+//! AFTER CREATING BILL REFRESHBILLS DOES A GET THEN FOR EACH DATA MAPS IT TO A CARD
+var refershBills = () => {
+	console.log("CREATED TILES");
+	API.getBills().then(data => {
+		console.log("data", data);
+		var newTile = data.map(item => {
+			console.log(
+				`userId: ${item.UserId} UtilId: ${item.UtilId}, Amount: ${item.amount}, DueDate: ${item.dueDate}`
+			);
+			//* creates basic div
+			var card = $("<div class='card horizontal'>");
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
+			//* determins image and link based off of the utility
+			switch (item.UtilId) {
+				case 1:
+					var itemImage =
+						"https://www.xcelenergy.com/staticfiles/xe-responsive/assets/images/logo.png";
+					var itemUrl = "https://www.xcelenergy.com/billing_and_payment";
+					break;
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+				case 2:
+					var itemImage =
+						"https://www.denverwater.org/sites/default/files/DW-Horizontal.png";
+					var itemUrl = "https://www.denverwater.org/pay-my-bill";
+					break;
+			}
 
-      $li.append($button);
+			// //* image div and image for bill
+			var cardImage = $("<div class='card-image'>").append(
+				`<img src=${itemImage}>`
+			);
 
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
+			// //* card content
+			var cardContent = $("<div card-stacked>").append(
+				$("<div class='card-content'>").text(
+					`Due: ${item.dueDate} Amount: ${item.amount}`
+				),
+				$("<div class='card-action'>").append(
+					$(`<a href=${itemUrl}>`).text("Pay Now")
+				)
+			);
+			// //* assemble and place
+			card.append(cardImage, cardContent);
+			return card;
+		});
+		$("#tiles").empty();
+		$("#tiles").append(newTile);
+	});
 };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
+//! CREATES BILL THEN SETS UP PROMISE TO LOAD BILLS
+var ajaxbill = function(event) {
+	event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+	//VALIDATOR, won't to a PUT if missing values
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
+	if (
+		!$userID.toString(10) ||
+		!$utilityInput.val().trim() ||
+		!$amountInput.val().trim() ||
+		!$dateInput.val().trim()
+	) {
+		return false;
+	}
+	var data = {
+		UserId: $userID.toString(10),
+		UtilId: $utilityInput.val().trim(),
+		amount: $amountInput.val().trim(),
+		dueDate: $dateInput.val().trim()
+	};
+	API.createBill(data).then(() => {
+		refershBills();
+	});
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+//! CREATE Listener
+$createBillButton.on("click", ajaxbill);
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
-
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$(document).ready(function() {
+	refershBills();
+});

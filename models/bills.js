@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
 		// 	allowNull: false
 		// },
 		dueDate: {
-			type: DataTypes.DATEONLY,
+			type: DataTypes.STRING,
 			allowNull: false
 		}
 	});
