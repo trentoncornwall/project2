@@ -1,6 +1,6 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
 	//* USER SERVICES *//
 	//*****************/
 
@@ -144,14 +144,12 @@ module.exports = function(app) {
 		db.Bill.destroy({
 			where: {}
 		}).then(() => {
-			db.Bill.bulkCreate([
-				{
-					UserId: 1,
-					UtilId: 1,
-					amount: 100,
-					dueDate: "2019-12-31"
-				}
-			]).then(success => {
+			db.Bill.bulkCreate([{
+				UserId: 1,
+				UtilId: 1,
+				amount: 100,
+				dueDate: "2019-12-31"
+			}]).then(success => {
 				if (success) {
 					res.sendStatus(200);
 				}
@@ -159,12 +157,21 @@ module.exports = function(app) {
 		});
 	});
 
+	app.post("/api/remove/:billid", (req, res) => {
+		db.Bill.destroy({
+			where: {
+				id: req.params.billid
+			}
+		}).then(success => {
+			success ? res.sendStatus(200) : sendStatus(404);
+		})
+	})
+
 	app.post("/api/load/users", (req, res) => {
 		db.User.destroy({
 			where: {}
 		}).then(() => {
-			db.User.bulkCreate([
-				{
+			db.User.bulkCreate([{
 					email: "test1",
 					password: "test1"
 				},
@@ -188,20 +195,17 @@ module.exports = function(app) {
 		db.Util.destroy({
 			where: {}
 		}).then(() => {
-			db.Util.bulkCreate([
-				{
+			db.Util.bulkCreate([{
 					type: "Electric",
 					name: "Xcel Energy",
 					url: "https://www.xcelenergy.com/billing_and_payment",
-					logo:
-						"https://www.xcelenergy.com/staticfiles/xe-responsive/assets/images/logo.png"
+					logo: "https://www.xcelenergy.com/staticfiles/xe-responsive/assets/images/logo.png"
 				},
 				{
 					type: "Water",
 					name: "Den Water",
 					url: "https://www.denverwater.org/pay-my-bill",
-					logo:
-						"https://www.denverwater.org/sites/default/files/DW-Horizontal.png"
+					logo: "https://www.denverwater.org/sites/default/files/DW-Horizontal.png"
 				}
 			]).then(success => {
 				res.sendStatus(200);

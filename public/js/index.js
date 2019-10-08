@@ -25,6 +25,13 @@ var API = {
 			type: "POST",
 			data: JSON.stringify(data)
 		});
+	},
+
+	removeBill: function(billid){
+		return $.ajax({
+			url: `/api/remove/${billid}`,
+			type: "POST"
+		});
 	}
 };
 
@@ -34,8 +41,9 @@ var refershBills = () => {
 	API.getBills().then(data => {
 		console.log("data", data);
 		var newTile = data.map(item => {
+			console.log(item)
 			console.log(
-				`userId: ${item.UserId} UtilId: ${item.UtilId}, Amount: ${item.amount}, DueDate: ${item.dueDate}`
+				`listId: ${item.id} userId: ${item.UserId} UtilId: ${item.UtilId}, Amount: ${item.amount}, DueDate: ${item.dueDate}`
 			);
 			//* creates basic div
 			var card = $("<div class='card horizontal'>");
@@ -67,6 +75,9 @@ var refershBills = () => {
 				),
 				$("<div class='card-action'>").append(
 					$(`<a href=${itemUrl}>`).text("Pay Now")
+				),
+				$("<div class='card-action'>").append(
+					$(`<a href="#" class="remove-bill" id=${item.id}>`).text("Remove")
 				)
 			);
 			// //* assemble and place
@@ -105,6 +116,23 @@ var ajaxbill = function(event) {
 
 //! CREATE Listener
 $createBillButton.on("click", ajaxbill);
+
+//! remove-bill jquery for dynamic button events
+$(document).on("click", "a.remove-bill", (event)=>{
+	event.preventDefault();
+
+	console.log("clicked");
+	var data = {
+		UserId: $userID.toString(10),
+		UtilId: $utilityInput.val().trim(),
+		amount: $amountInput.val().trim(),
+		dueDate: $dateInput.val().trim()
+	};
+	console.log(data);
+	API.removeBill(event.target.id).then(()=>{
+		refershBills();
+	})
+})
 
 $(document).ready(function() {
 	refershBills();
