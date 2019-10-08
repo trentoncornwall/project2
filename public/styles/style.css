@@ -1,34 +1,34 @@
-body{
-	font-family: "Roboto Mono";
-	background-color:rgb(238, 238, 238);
+body {
+  font-family: "Roboto";
+  background-color: rgb(238, 238, 238);
 }
 
-.logo-style{
-	font-family: "Roboto Mono";
-	font-size: 24px;
-	text-decoration: none;
-	color: white;
-	padding-left:10px;
+.logo-style {
+  font-family: "Roboto Mono";
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+  padding-left: 10px;
 }
 
-.collapsible-body{
-	background-color:white;
+.collapsible-body {
+  background-color: white;
 }
 
-#createBillButton{
-	margin-top:15px;
+#createBillButton {
+  margin-top: 15px;
 }
 
 .accordion {
-	background-color: #eee;
-	color: #444;
-	cursor: pointer;
-	padding: 18px;
-	width: 100%;
-	text-align: left;
-	border: none;
-	outline: none;
-	transition: 0.4s;
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -39,52 +39,52 @@ body{
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {
-	padding: 0 18px;
-	background-color: white;
-	display: none;
-	overflow: hidden;
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
 }
 
 .tile {
-	display: grid;
-	grid-gap: 20px;
+  display: grid;
+  grid-gap: 20px;
 }
 
 .compName {
-	grid-column-start: 1;
-	grid-column-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .compType {
-	grid-column-start: 3;
-	grid-column-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 3;
 }
 
 .dueDate {
-	grid-row-start: 2;
-	grid-column-end: 2;
+  grid-row-start: 2;
+  grid-column-end: 2;
 }
 
 .amountDue {
-	grid-row-start: 2;
-	grid-column-start: 3;
-	grid-column-end: 3;
+  grid-row-start: 2;
+  grid-column-start: 3;
+  grid-column-end: 3;
 }
 
 .glob {
-	background-image: url("img/buy-cash-coins-9660.jpg");
-	background-repeat: no-repeat;
-	background-size: 100%;
+  background-image: url("img/buy-cash-coins-9660.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 #create_bill {
-	width: 100%;
+  width: 100%;
 }
 
 .datepicker-modal {
-	height: 346px;
+  height: 346px;
 }
 
 #signout {
-	color: black;
+  color: black;
 }
