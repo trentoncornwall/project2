@@ -1,3 +1,24 @@
+body{
+	font-family: "Roboto Mono";
+	background-color:rgb(238, 238, 238);
+}
+
+.logo-style{
+	font-family: "Roboto Mono";
+	font-size: 24px;
+	text-decoration: none;
+	color: white;
+	padding-left:10px;
+}
+
+.collapsible-body{
+	background-color:white;
+}
+
+#createBillButton{
+	margin-top:15px;
+}
+
 .accordion {
 	background-color: #eee;
 	color: #444;

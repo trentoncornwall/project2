@@ -77,7 +77,8 @@ var refershBills = () => {
 					$(`<a href=${itemUrl}>`).text("Pay Now")
 				),
 				$("<div class='card-action'>").append(
-					$(`<a href="#" class="remove-bill" id=${item.id}>`).text("Remove")
+					$(`<a href="#" class="remove-bill" id=${item.id}>`).text("Completed")
+					// $(`<a class="waves-effect waves-light btn-small" id=${item.id}><i class="material-icons right">cloud</i>remove</a>`)
 				)
 			);
 			// //* assemble and place
