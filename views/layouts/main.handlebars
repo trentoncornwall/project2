@@ -18,18 +18,23 @@
   <link rel="stylesheet" href="../styles/style.css">
 </head>
 <script>
-  function init() {
+
+  function signOut() {
     gapi.load('auth2', function () {
       /* Ready. Make a call to gapi.auth2.init or some other API */
-      gapi.auth2.init().then(console.log(`Initialize Auth 2`))
+      gapi.auth2.init().then(() => {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+          window.location.replace(`/`)
+        });
+      })
     });
-  }
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-      window.location.replace(`/`)
-    });
+    //    var auth2 = gapi.auth2.getAuthInstance();
+    //    auth2.signOut().then(function () {
+    //      console.log('User signed out.');
+    //      window.location.replace(`/`)
+    //    });
   }
 </script>
 
