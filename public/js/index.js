@@ -61,11 +61,21 @@ var refershBills = () => {
             "https://www.denverwater.org/sites/default/files/DW-Horizontal.png";
           var itemUrl = "https://www.denverwater.org/pay-my-bill";
           break;
+        case 3:
+          var itemImage =
+            "https://humanresources.dixie.edu/wp-content/uploads/sites/103/2016/11/T_Mobile_logo.png";
+          var itemUrl = "http://t-mo.co/2lnwiIF";
+          break;
+        case 4:
+          var itemImage =
+            "https://5taz8eljj63owlf43qy49n1e-wpengine.netdna-ssl.com/wp-content/uploads/2018/01/Xfinity_logo.svg_.png";
+          var itemUrl = "https://customer.xfinity.com/Secure/OneTimePayment";
+          break;
       }
 
       // //* image div and image for bill
       var cardImage = $("<div class='card-image'>").append(
-        `<img src=${itemImage}>`
+        `<img src=${itemImage} class="image-style">`
       );
 
       // //* card content

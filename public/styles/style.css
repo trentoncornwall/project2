@@ -90,6 +90,10 @@ body {
 
 /* Style the accordion panel. Note: hidden by default */
 
+.image-style {
+  max-height: 100px;
+}
+
 .card {
   animation: fade-in 0.6s ease-in-out;
   margin-right: 10px;
