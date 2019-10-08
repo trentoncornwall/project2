@@ -1,7 +1,8 @@
-<nav>
-    <div class="nav-wrapper red darken-2">
-        <a href="#" class="left logo-style">ITILITY</a>
-        <a href="#" class="right main-email-style">USER: {{email.dataValues.email}}</a>
+<nav class="z-depth-2">
+    <div class="nav-wrapper red darken-1">
+        <a href="#" class="brand-logo center logo-style">ITILITY</a>
+        <p href="#" class="left main-email-style">{{email.dataValues.email}}</p>
+        <a href="#" class="right white-text sign-out-btn" id="signout" href="#" onclick="signOut();">Sign Out</a>
         {{!-- <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li><a href="/">Login</a></li>
       <li><a href="/home">home</a></li>
@@ -11,12 +12,14 @@
     </div>
 </nav>
 
+<div class="spacer-div"></div>
+
 <div class="container">
     {{!-- CREATE BILL --}}
     <ul class="collapsible">
         <li>
             <div class="collapsible-header"><i class="material-icons">note_add</i>
-                <p id="user" data-id="{{email.dataValues.id}}">Add Bill</p>
+                <p id="user" data-id="{{email.dataValues.id}}" class="text-fix">Add Bill</p>
             </div>
             <div class="collapsible-body">
                 <div class="row">
@@ -47,7 +50,7 @@
                     </select>
                 </div>
                 {{!-- ! This button should Send a POST to create a bill using AJAX and jquery to grab values --}}
-                <a class='dropdown-trigger btn' id="createBillButton" data-target='dropdown1'>Add Bill</a>
+                <a class='dropdown-trigger btn red white-text' id="createBillButton" data-target='dropdown1'>Add Bill</a>
             </div>
         </li>
     </ul>

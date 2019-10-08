@@ -1,14 +1,65 @@
 body {
   font-family: "Roboto";
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(243, 243, 243);
+  color: rgb(31, 31, 31);
+}
+
+.sign-out-btn {
+  height: 100%;
+  width: 120px;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.sign-out-btn:hover {
+  background-color: rgba(15, 113, 131, 0.582);
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+.spacer-div {
+  height: 30px;
+}
+
+.text-fix {
+  margin: 2px 0 0 0;
 }
 
 .logo-style {
-  font-family: "Roboto Mono";
-  font-size: 24px;
+  font-family: "Roboto";
+  letter-spacing: 2px;
+  font-size: 22px;
   text-decoration: none;
   color: white;
   padding-left: 10px;
+}
+
+.logo-style:hover {
+  text-decoration: none;
+}
+
+.main-email-style {
+  text-align: center;
+  margin-left: 15px;
+}
+.card
+  .card-action
+  a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+  color: rgb(255, 25, 25);
+}
+
+.card-image img {
+  padding: 24px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  width: 300px;
+}
+
+.card
+  .card-action
+  a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+  color: rgba(0, 0, 0, 0.884);
+  text-decoration: none;
 }
 
 .collapsible-body {
@@ -38,6 +89,21 @@ body {
 } */
 
 /* Style the accordion panel. Note: hidden by default */
+
+.card {
+  animation: fade-in 0.6s ease-in-out;
+  margin-right: 10px;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .panel {
   padding: 0 18px;
   background-color: white;
@@ -82,7 +148,7 @@ body {
 }
 
 .datepicker-modal {
-  height: 346px;
+  height: 350px;
 }
 
 #signout {
