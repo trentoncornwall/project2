@@ -24,7 +24,3 @@ module.exports = function(app) {
 
 
 
-// User.findAll({ 
-//     limit: 10 ,
-//     order: 'follower DESC'
-// })
