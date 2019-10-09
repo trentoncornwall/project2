@@ -32,7 +32,18 @@ var API = {
 			url: `/api/remove/${billid}`,
 			type: "POST"
 		});
-	}
+    },
+//************************************************************************************************** /
+
+    sumBill: function() {
+        return $.ajax({
+            url: `/api/total/user`,
+            type: "GET"
+        });
+    }
+
+//************************************************************************************************** */
+
 };
 
 //! AFTER CREATING BILL REFRESHBILLS DOES A GET THEN FOR EACH DATA MAPS IT TO A CARD
@@ -96,13 +107,36 @@ var refershBills = () => {
 			return card;
 		});
 		$("#tiles").empty();
-		$("#tiles").append(newTile);
+        $("#tiles").append(newTile);
+       
 	});
 };
 
+//************************************************************************************************** */
+
+
+
+var getTotal = () => {
+    API.sumBill().then(data => {
+        console.log(data);
+        var total = data;
+        $("#total").text(data);
+
+    });
+
+};
+
+//************************************************************************************************** */
+
+
+
 //! CREATES BILL THEN SETS UP PROMISE TO LOAD BILLS
 var ajaxbill = function(event) {
-	event.preventDefault();
+    event.preventDefault();
+
+
+    getTotal();
+    
 
 	//VALIDATOR, won't to a PUT if missing values
 
@@ -125,6 +159,12 @@ var ajaxbill = function(event) {
 	});
 };
 
+
+
+
+
+
+
 //! CREATE Listener
 $createBillButton.on("click", ajaxbill);
 
@@ -145,7 +185,10 @@ $(document).on("click", "a.remove-bill", event => {
 	});
 	$amountInput.val("");
 	$dateInput.val("");
-	$utilityInput.val("");
+    $utilityInput.val("");
+    
+    
+
 });
 
 $(document).ready(function() {
